@@ -22,16 +22,16 @@
 """
 
 while True:
-	try:
-		n = int(input())
-		arr = list(map(int, input().split()))
+    try:
+        n = int(input())
+        arr = list(map(int, input().split()))
 
-		if n % 2 == 0:
-			res = arr[n-1::-2] + arr[::2]
-		else:
-			res = arr[n-1::-2] + arr[1::2]
+        if n % 2 == 0:
+            res = arr[n-1::-2] + arr[::2]
+        else:
+            res = arr[n-1::-2] + arr[1::2]
 
-		print(" ".join(map(str, res)))
+        print(" ".join(map(str, res)))
 
-	except:
-		break
+    except:
+        break

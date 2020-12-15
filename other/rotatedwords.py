@@ -20,22 +20,22 @@ ordw
 '''
 
 while True:
-	try:
-		n = int(input())
-		words = []
-		for i in range(n):
-			words.append(input())
+    try:
+        n = int(input())
+        words = []
+        for i in range(n):
+            words.append(input())
 
-		count = 0
-		all_words = []
-		for word in words:
-			if word not in all_words:
-				count += 1
-				all_words.append(word)
-				new_word = word[1:] + word[:1]
-				while new_word != word:
-					all_words.append(new_word)
-					new_word = new_word[1:] + new_word[:1]
-		print(count)
-	except:
-		break
+        count = 0
+        all_words = []
+        for word in words:
+            if word not in all_words:
+                count += 1
+                all_words.append(word)
+                new_word = word[1:] + word[:1]
+                while new_word != word:
+                    all_words.append(new_word)
+                    new_word = new_word[1:] + new_word[:1]
+        print(count)
+    except:
+        break

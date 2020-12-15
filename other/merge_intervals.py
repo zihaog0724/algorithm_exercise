@@ -23,7 +23,7 @@ class Solution:
         merged = []
         for i in intervals:
             if len(merged) == 0 or i.start > merged[-1].end:
-            	merged.append(i)
+                merged.append(i)
             elif i.start <= merged[-1].end:
                 if i.end <= merged[-1].end:
                     continue
