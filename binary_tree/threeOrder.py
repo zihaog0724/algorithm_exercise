@@ -56,3 +56,10 @@ nums=[1,2,3,4,5,6,7]
 root = create_tree(None, nums, 0)
 solution = Solution()
 print(solution.threeOrders(root))
+
+import collections
+levelNode = collections.deque()
+levelNode.append((root, 1))
+print(levelNode.popleft())
+
+
