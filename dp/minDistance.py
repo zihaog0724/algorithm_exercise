@@ -1,4 +1,4 @@
-// leetcode 72. minDistance
+# leetcode 72. minDistance
 
 class Solution(object):
     def minDistance(self, word1, word2):
