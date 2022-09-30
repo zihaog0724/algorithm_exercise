@@ -12,42 +12,32 @@
 要搜索的目标值为3，返回true；
 '''
 
-class Solution:
-    def searchMatrix(self , matrix , target ):
-        # write code here
-        # 先判断target是否超出矩阵范围
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
         if target < matrix[0][0] or target > matrix[-1][-1]:
             return False
-
-        # 二分确定行
-        low1, high1 = 0, len(matrix) - 1
-        while low1 <= high1:
-            mid1 = (low1 + high1) // 2
-            if target == matrix[mid1][0]:
+        for i in range(len(matrix)):
+            ret = self.binary_search(matrix[i], target)
+            if ret:
                 return True
-            if target < matrix[mid1][0]:
-                high1 = mid1 - 1
-            else:
-                low1 = mid1 + 1
-
-        # 二分确定列
-        low2, high2 = 0, len(matrix[0]) - 1
-        while low2 <= high2:
-            mid2 = (low2 + high2) // 2
-            if target == matrix[mid1][mid2]:
-                return True
-            if target < matrix[mid1][mid2]:
-                high2 = mid2 - 1
-            else:
-                low2 = mid2 + 1
-
         return False
-
-# Test
-solution = Solution()
-res = solution.searchMatrix([[1,3]],3)
-print(res)
-
+        
+    def binary_search(self, nums, target):
+        low, high = 0, len(nums) - 1
+        while low <= high:
+            mid = (low + high) // 2
+            if target < nums[mid]:
+                high = mid - 1
+            elif target > nums[mid]:
+                low = mid + 1
+            else:
+                return True
+        return False
 
 
 
