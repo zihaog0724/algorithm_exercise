@@ -11,7 +11,7 @@ class Solution(object):
             if c == ']':
                 repeat_str = ''
                 repeat_cnt = ''
-                while stack[-1] != '[':
+                while stack and stack[-1] != '[':
                     repeat_str = stack.pop() + repeat_str
                 stack.pop()
                 while stack and stack[-1].isnumeric():
