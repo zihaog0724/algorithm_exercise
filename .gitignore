@@ -1,0 +1,10 @@
+.DS_Store
+cmake-build-debug/
+.idea/
+build/
+libs/
+objs/
+debug/
+resource/
+vendor/
+__pycache__/
