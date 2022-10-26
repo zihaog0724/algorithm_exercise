@@ -1,4 +1,5 @@
 # hot100-lc 406. 根据身高重建队列
+from functools import cmp_to_key
 
 class Solution(object):
     def reconstructQueue(self, people):
