@@ -7,24 +7,19 @@
 #         self.left = left
 #         self.right = right
 
-
 class Solution(object):
     def postorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        if not root:
-            return []
+        self.ret = []
+        self.dfs(root)
+        return self.ret
 
-        node = root
-        stack = [node]
-        res = []
-        while(len(stack) > 0):
-            res.append(node.val)
-            if node.left:
-                stack.append(node.left)
-            if node.right:
-                stack.append(node.right)
-            node = stack.pop()
-        return res[::-1] 
+    def dfs(self, root):
+        if not root:
+            return
+        self.dfs(root.left)
+        self.dfs(root.right)
+        self.ret.append(root.val)
