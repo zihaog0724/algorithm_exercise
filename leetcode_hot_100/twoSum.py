@@ -1,4 +1,4 @@
-# hot100-1
+# hot100-lc 1. 两数之和
 
 class Solution(object):
     def twoSum(self, nums, target):
@@ -7,7 +7,16 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        """
+        做一个dict{value: idx}, 遍历数组nums, 算差值，在dict里找这个差值
+        用空间换时间
+        """
+        dct = {}
         for i, value in enumerate(nums):
-            for j in range(i+1, len(nums)):
-                if (value + nums[j]) == target:
-                    return i, j
+            dct[value] = i
+
+        for i in range(len(nums)):
+            diff = target - nums[i]
+            if diff in dct:
+                if dct[diff] != i:
+                    return [i, dct[diff]]
