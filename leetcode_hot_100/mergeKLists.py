@@ -1,10 +1,10 @@
-# hot100-lc 23. 
+# hot100-lc 23. 合并K个升序链表
 
+# Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-
 
 class Solution(object):
     def mergeKLists(self, lists):
@@ -12,8 +12,12 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
+        """
+        归并排序秒杀:
+        先写两个有序链表的合并, 再递归分治
+        """
         if len(lists) == 0:
-            return []
+            return None
         if len(lists) == 1:
             return lists[0]
         mid = len(lists) // 2
@@ -21,26 +25,26 @@ class Solution(object):
         right = self.mergeKLists(lists[mid:])
         return self.mergeTwoLists(left, right)
 
-    def mergeTwoLists(self, l1, l2):
-        ret = ListNode()
-        head = ret
-        while l1 and l2:
-            if l1.val < l2.val:
-                head.next = l1
-                head = head.next
-                l1 = l1.next
+    def mergeTwoLists(self, node1, node2):
+        head = ListNode(0)
+        cur = head
+        while node1 and node2:
+            if node1.val < node2.val:
+                cur.next = node1
+                node1 = node1.next
             else:
-                head.next = l2
-                head = head.next
-                l2 = l2.next
+                cur.next = node2
+                node2 = node2.next
+            cur = cur.next
 
-        while l1:
-            head.next = l1
-            head = head.next
-            l1 = l1.next
+        while node1:
+            cur.next = node1
+            cur = cur.next
+            node1 = node1.next
 
-        while l2:
-            head.next = l2
-            head = head.next
-            l2 = l2.next
-        return ret.next
+        while node2:
+            cur.next = node2
+            cur = cur.next
+            node2 = node2.next
+        return head.next
+
