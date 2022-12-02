@@ -1,6 +1,8 @@
-# hot100-lc39. combinationSum
+# hot100-lc 39. 组合总和
+
 
 import copy
+
 
 class Solution(object):
     def combinationSum(self, candidates, target):
@@ -9,19 +11,21 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        ret = []
-        combination = []
-        self.process(candidates, combination, target, ret)
-        return ret
+        """
+        dfs题解见https://zhuanlan.zhihu.com/p/556482306
+        """
+        self.ret = []
+        self.dfs(candidates, target, [])
+        return self.ret
 
-    def process(self, candidates, combination, target, ret):
+    def dfs(self, candidates, target, combination):
         if sum(combination) == target:
-            ret.append(copy.deepcopy(combination))
+            self.ret.append(copy.deepcopy(combination))
             return
         if sum(combination) > target:
             return
 
         for i in range(len(candidates)):
             combination.append(candidates[i])
-            self.process(candidates[i:], combination, target, ret)
+            self.dfs(candidates[i:], target, combination)
             combination.pop()
